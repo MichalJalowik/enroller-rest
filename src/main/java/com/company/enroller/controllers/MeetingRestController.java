@@ -91,6 +91,7 @@ public class MeetingRestController {
 
 		Participant participantToAdd = participantService.findByLogin(login);
 		currentMeeting.addParticipant(participantToAdd);
+		participantToAdd.setMeetings(currentMeeting);
 		meetingService.update(currentMeeting);
 
 		return new ResponseEntity<Collection<Participant>>(currentMeeting.getParticipants(), HttpStatus.OK);
